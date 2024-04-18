@@ -59,7 +59,10 @@ namespace WebApi.Controllers
 
                 return Ok(colaboratorResultDTO);
             }else{
+                Console.WriteLine(_errorMessages[0]);
                 return BadRequest(_errorMessages);
+                
+
             }
         }
 
