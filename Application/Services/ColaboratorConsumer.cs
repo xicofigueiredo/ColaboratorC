@@ -29,13 +29,17 @@ public class ColaboratorConsumer : IColaboratorConsumer
 
         
 
-        _queueName =_channel.QueueDeclare().QueueName;
-        _channel.QueueBind(queue: _queueName, exchange: "colab_logs", routingKey: "colabKey");
+        // _queueName =_channel.QueueDeclare().QueueName;
+        // _channel.QueueBind(queue: _queueName, exchange: "colab_logs", routingKey: "colabKey");
         Console.WriteLine(" [*] Waiting for Collaborator messages.");
     }
 
-    public void StartConsuming()
+    public void StartConsuming(string queueName)
     {
+        _channel.QueueDeclare(queue: queueName, durable: true, exclusive: false, autoDelete: false);
+        _channel.QueueBind(queue: queueName, exchange: "colab_logs", routingKey: "colabKey");
+
+
         var consumer = new EventingBasicConsumer(_channel);
         consumer.Received += async (model, ea) =>
         {

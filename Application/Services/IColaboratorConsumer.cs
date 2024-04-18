@@ -7,6 +7,6 @@ namespace Application.Services
 {
     public interface IColaboratorConsumer
     {
-        public void StartConsuming();
+        public void StartConsuming(string queueName);
     }
 }
