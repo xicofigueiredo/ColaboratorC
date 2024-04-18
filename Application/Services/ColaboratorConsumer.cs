@@ -10,7 +10,7 @@ using RabbitMQ.Client.Events;
 public class ColaboratorConsumer : IColaboratorConsumer
 {
     private readonly IModel _channel;
-    private readonly string _queueName;
+   
 
     private readonly IServiceScopeFactory _serviceScopeFactory;
   
@@ -64,6 +64,6 @@ public class ColaboratorConsumer : IColaboratorConsumer
  
         };
 
-        _channel.BasicConsume(queue: _queueName, autoAck: true, consumer: consumer);
+        _channel.BasicConsume(queue: queueName, autoAck: true, consumer: consumer);
     }
 }
