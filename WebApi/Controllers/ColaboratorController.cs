@@ -6,7 +6,6 @@ using Domain.Factory;
 using RabbitMQ.Client;
 using Newtonsoft.Json;
 
-
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
@@ -49,9 +48,12 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<ColaboratorDTO>> PostColaborator(ColaboratorDTO colaboratorDTO)
         {
+
+           
             ColaboratorDTO colaboratorResultDTO = await _colaboratorService.Add(colaboratorDTO, _errorMessages);
 
-            if(colaboratorResultDTO != null){
+
+            if (colaboratorResultDTO != null){
                 
                 string objectAsString = JsonConvert.SerializeObject(colaboratorResultDTO);
                 _colaboratorPublisher.PublishMessage(objectAsString);
@@ -59,11 +61,16 @@ namespace WebApi.Controllers
 
                 return Ok(colaboratorResultDTO);
             }else{
-                Console.WriteLine(_errorMessages[0]);
-                return BadRequest(_errorMessages);
+              Console.WriteLine(_errorMessages[0]);
+              return BadRequest(_errorMessages);
                 
 
             }
+        }
+
+        private ActionResult<ColaboratorDTO> UnprocessableEntityResult(List<string> errorMessages)
+        {
+            throw new NotImplementedException();
         }
 
         // // DELETE: api/Colaborator/5

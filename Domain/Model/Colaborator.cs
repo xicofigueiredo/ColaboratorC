@@ -26,7 +26,9 @@ public class Colaborator : IColaborator
 		get { return _address; }
 	}
 
-	private Colaborator() {}
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    private Colaborator() {}
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
     public Colaborator(string strName, string strEmail, string street, string postalCode) {
 

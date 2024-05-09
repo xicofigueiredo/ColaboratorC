@@ -11,6 +11,18 @@ using Microsoft.OpenApi.Any;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 string queueName = args.Length > 0 ? args[0] : "colab_logsComment";
 var port = GetPortForQueue(queueName);
 
@@ -43,6 +55,7 @@ builder.Services.AddTransient<ColaboratorMapper>();
 builder.Services.AddTransient<ColaboratorService>();
 builder.Services.AddTransient<ColaboratorPublisher>();
 builder.Services.AddSingleton<IColaboratorConsumer, ColaboratorConsumer>();
+builder.Services.AddSingleton<IHolidayValidationConsumer, HolidayValidationConsumer>();
 
 
 
@@ -63,11 +76,16 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+
+app.UseCors("AllowAllOrigins");
+
 app.MapControllers();
 
 
 var rabbitMQConsumerService = app.Services.GetRequiredService<IColaboratorConsumer>();
 rabbitMQConsumerService.StartConsuming(queueName);
+var rabbitMQConsumerServiceHoliday = app.Services.GetRequiredService<IHolidayValidationConsumer>();
+rabbitMQConsumerServiceHoliday.StartHolidayConsuming(queueName);
  
 
 app.Run($"https://localhost:{port}");
@@ -77,6 +95,6 @@ static int GetPortForQueue(string queueName)
     // Implement logic to map queue name to a unique port number
     // Example: Assign a unique port number based on the queue name suffix
     int basePort = 5010; // Start from port 5000
-    int queueIndex = int.Parse(queueName.Substring(1)); // Extract the numeric part of the queue name (assuming it starts with 'Q')
+    int queueIndex = int.Parse(queueName.Substring(1)); // Extract the numeric part of the queue name (assuming it starts with 'C')
     return basePort + queueIndex;
 }

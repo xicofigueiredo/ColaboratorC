@@ -13,11 +13,13 @@ public class ColaboratorDTO
 	public string Name { get; set; }
 	public string Street { get; set; }
 	public string PostalCode { get; set; }
-	
-	public ColaboratorDTO() {
-	}
 
-	public ColaboratorDTO(long id, string strName, string strEmail, string strStreet, string strPostalCode)
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    public ColaboratorDTO() {
+	}
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+
+    public ColaboratorDTO(long id, string strName, string strEmail, string strStreet, string strPostalCode)
 	{
 		Id = id;
 		Name = strName;
