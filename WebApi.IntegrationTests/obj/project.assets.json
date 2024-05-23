@@ -14939,32 +14939,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\naguiar\\.nuget\\packages\\": {}
+    "C:\\Users\\ffigueiredo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Works\\ColaboratorC\\WebApi.IntegrationTests\\WebApi.IntegrationTests.csproj",
+      "projectUniqueName": "C:\\Users\\ffigueiredo\\academia\\ColaboratorC\\WebApi.IntegrationTests\\WebApi.IntegrationTests.csproj",
       "projectName": "WebApi.IntegrationTests",
-      "projectPath": "C:\\Works\\ColaboratorC\\WebApi.IntegrationTests\\WebApi.IntegrationTests.csproj",
-      "packagesPath": "C:\\Users\\naguiar\\.nuget\\packages\\",
-      "outputPath": "C:\\Works\\ColaboratorC\\WebApi.IntegrationTests\\obj\\",
+      "projectPath": "C:\\Users\\ffigueiredo\\academia\\ColaboratorC\\WebApi.IntegrationTests\\WebApi.IntegrationTests.csproj",
+      "packagesPath": "C:\\Users\\ffigueiredo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ffigueiredo\\academia\\ColaboratorC\\WebApi.IntegrationTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\naguiar\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\ffigueiredo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://cleopatra/BSimpleCollection/_packaging/Nuget_Packages/nuget/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Works\\ColaboratorC\\WebApi\\WebApi.csproj": {
-              "projectPath": "C:\\Works\\ColaboratorC\\WebApi\\WebApi.csproj"
+            "C:\\Users\\ffigueiredo\\academia\\ColaboratorC\\WebApi\\WebApi.csproj": {
+              "projectPath": "C:\\Users\\ffigueiredo\\academia\\ColaboratorC\\WebApi\\WebApi.csproj"
             }
           }
         }

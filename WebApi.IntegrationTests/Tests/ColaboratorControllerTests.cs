@@ -39,22 +39,22 @@ namespace WebApi.IntegrationTests.Tests
         [InlineData("/api/colaborator")]
         public async Task Post_EndpointReturnsBadRequestOnInvalidData(string url)
         {
-            // Arrange
+            // arrange
             var client = _factory.CreateClient();
             var colaboratorDTO = new ColaboratorDTO
             {
-                Name = "", // Invalid name
-                Email = "invalid-email", // Invalid email
+                Name = "",
+                Email = "invalid-email", 
                 Street = "Test Street",
                 PostalCode = "12345"
             };
             var jsonContent = JsonConvert.SerializeObject(colaboratorDTO);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-            // Act
+            // act
             var response = await client.PostAsync(url, content);
 
-            // Assert
+            // assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
@@ -62,7 +62,7 @@ namespace WebApi.IntegrationTests.Tests
         [InlineData("/api/colaborator")]
         public async Task Post_EndpointResponseTimeIsAcceptable(string url)
         {
-            // Arrange
+            // arrange
             var client = _factory.CreateClient();
             var colaboratorDTO = new ColaboratorDTO
             {
@@ -73,16 +73,37 @@ namespace WebApi.IntegrationTests.Tests
             };
             var jsonContent = JsonConvert.SerializeObject(colaboratorDTO);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-            var maxResponseTime = TimeSpan.FromSeconds(3); // Define maximum acceptable response time
-
-            // Act
+            var maxResponseTime = TimeSpan.FromSeconds(3); 
+            // act
             var stopwatch = System.Diagnostics.Stopwatch.StartNew();
             var response = await client.PostAsync(url, content);
             stopwatch.Stop();
 
-            // Assert
-            response.EnsureSuccessStatusCode(); // Status Code 200-299
+            // assert
+            response.EnsureSuccessStatusCode(); 
             Assert.True(stopwatch.Elapsed < maxResponseTime, $"Response time exceeded {maxResponseTime.TotalSeconds} seconds");
+        }
+
+        [Theory]
+        [InlineData("/api/colaborator")]
+        public async Task Post_EndpointReturnsBadRequestOnDuplicatedData(string url)
+        {
+            // arrange
+            var client = _factory.CreateClient();
+            var colaboratorDTO = new ColaboratorDTO
+            {
+                Name = "Duplicated Test",
+                Email = "test@example.com",
+                Street = "Test Street",
+                PostalCode = "12345"
+            };
+            var jsonContent = JsonConvert.SerializeObject(colaboratorDTO);
+            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+            // act
+            var response = await client.PostAsync(url, content);
+
+            // assert
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
         
         
@@ -90,27 +111,27 @@ namespace WebApi.IntegrationTests.Tests
         [InlineData("/api/colaborator")]
         public async Task Post_EndpointReturnsSuccess(string url)
         {
-            // Arrange
+            // arrange
             var client = _factory.CreateClient();
 
-            // Create a sample ColaboratorDTO object to be posted
+            
             var colaboratorDTO = new ColaboratorDTO
             {
                 Name = "Test Name",
-                Email = "tesasd@example.com",
+                Email = "tests@example.com",
                 Street = "Test Street",
                 PostalCode = "12345"
             };
 
-            // Serialize the ColaboratorDTO object to JSON and set the content type
+          
             var jsonContent = JsonConvert.SerializeObject(colaboratorDTO);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-            // Act
+            // act
             var response = await client.PostAsync(url, content);
 
-            // Assert
-            response.EnsureSuccessStatusCode(); // Status Code 200-299
+            // assert
+            response.EnsureSuccessStatusCode(); 
         }
     
     }
