@@ -45,10 +45,10 @@ C:\Works\ColaboratorC\DataModel\obj\Debug\net8.0\DataModel.GeneratedMSBuildEdito
 C:\Works\ColaboratorC\DataModel\obj\Debug\net8.0\DataModel.AssemblyInfoInputs.cache
 C:\Works\ColaboratorC\DataModel\obj\Debug\net8.0\DataModel.AssemblyInfo.cs
 C:\Works\ColaboratorC\DataModel\obj\Debug\net8.0\DataModel.csproj.CoreCompileInputs.cache
+C:\Works\ColaboratorC\DataModel\obj\Debug\net8.0\DataModel.sourcelink.json
 C:\Works\ColaboratorC\DataModel\obj\Debug\net8.0\DataModel.csproj.Up2Date
 C:\Works\ColaboratorC\DataModel\obj\Debug\net8.0\DataModel.dll
 C:\Works\ColaboratorC\DataModel\obj\Debug\net8.0\refint\DataModel.dll
 C:\Works\ColaboratorC\DataModel\obj\Debug\net8.0\DataModel.pdb
 C:\Works\ColaboratorC\DataModel\obj\Debug\net8.0\DataModel.genruntimeconfig.cache
 C:\Works\ColaboratorC\DataModel\obj\Debug\net8.0\ref\DataModel.dll
-C:\Works\ColaboratorC\DataModel\obj\Debug\net8.0\DataModel.sourcelink.json

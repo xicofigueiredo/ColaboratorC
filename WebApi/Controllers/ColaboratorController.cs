@@ -23,28 +23,7 @@ namespace WebApi.Controllers
             _colaboratorPublisher = colaboratorPublisher;
         }
 
-        // PUT: api/Colaborator/a@bc
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        // [HttpPut("{email}")]
-        // public async Task<IActionResult> PutColaborator(string email, ColaboratorDTO colaboratorDTO)
-        // {
-        //     if (email != colaboratorDTO.Email)
-        //     {
-        //         return BadRequest();
-        //     }
 
-        //     bool wasUpdated = await _colaboratorService.Update(email, colaboratorDTO, _errorMessages);
-
-        //     if (!wasUpdated /* && _errorMessages.Any() */)
-        //     {
-        //         return BadRequest(_errorMessages);
-        //     }
-
-        //     return Ok();
-        // }
-
-        // POST: api/Colaborator
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<ColaboratorDTO>> PostColaborator(ColaboratorDTO colaboratorDTO)
         {
@@ -72,6 +51,29 @@ namespace WebApi.Controllers
         {
             throw new NotImplementedException();
         }
+
+                // PUT: api/Colaborator/a@bc
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // [HttpPut("{email}")]
+        // public async Task<IActionResult> PutColaborator(string email, ColaboratorDTO colaboratorDTO)
+        // {
+        //     if (email != colaboratorDTO.Email)
+        //     {
+        //         return BadRequest();
+        //     }
+
+        //     bool wasUpdated = await _colaboratorService.Update(email, colaboratorDTO, _errorMessages);
+
+        //     if (!wasUpdated /* && _errorMessages.Any() */)
+        //     {
+        //         return BadRequest(_errorMessages);
+        //     }
+
+        //     return Ok();
+        // }
+
+        // POST: api/Colaborator
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 
         // // DELETE: api/Colaborator/5
         // [HttpDelete("{email}")]
